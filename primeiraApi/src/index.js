@@ -18,32 +18,8 @@ class AppController {
 
   //Define as rotas da nossa API
   routes() {
-    const users = [];
-    this.express.post("/users", (req, res) => {
-      const { id, nome, email, senha } = req.body;
-      users.push({ id, nome, email, senha });
-      res.status(200).send({ message: "Usuário cadastrado com sucesso" });
-    });
-
-    this.express.get("/users/:id", (req, res) => {
-      const { id } = req.params;
-      const user = users.find((user) => user.id == id);
-      if (user) {
-        res.status(200).send(user);
-      } else {
-        res.status(400).send({ message: "Usuário não encontrado" });
-      }
-    });
-
-    this.express.post("/auth", (req,res) => {
-      const {email, senha } = req.body;
-      const user = users.find((user) => user.email == email && user.senha == senha);
-      if (user) {
-        res.status(200).send({message: "Email e senha válido"});
-      } else {
-        res.status(400).send({ message: "Email ou senha incorreto!!" });
-      }
-    });
+    const apiRoutes = require('./routes/apiRoutes');
+    this.express.use('/project-senai/api/v1/',apiRoutes);
 
     //Define uma rota GET para o caminho health
     this.express.get("/health/", (req, res) => {
