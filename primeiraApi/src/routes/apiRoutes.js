@@ -10,6 +10,7 @@ const teacherController = require('../controllers/teacherController');
 router.post('/teacher/', teacherController.postTeacher);
 router.get('/teacher/', teacherController.getTeacher);
 
-router.post('/teacher/', controllerNumbers.checkPar);
+router.post('/par/', controllerNumbers.checkPar);
+router.post('/primo/', controllerNumbers.checkPrimo);
 
 module.exports = router
