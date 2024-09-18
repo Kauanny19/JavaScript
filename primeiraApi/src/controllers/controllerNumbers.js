@@ -1,8 +1,8 @@
 module.exports = class controllerNumbers {
     //Cadastro de professor
     static async checkPar(req, res) {
-      const {numero1} = req.body;
-      if (numero1 % 2 == 0) {
+      const {numbers} = req.body;
+      if (numbers % 2 == 0) {
         res.json({ message: "Número Par" });
       } else {
         res.json({message: "Número Ímpar"});
